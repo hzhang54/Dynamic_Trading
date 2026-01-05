@@ -67,7 +67,10 @@ price_trajectories = initial_prices * np.exp(np.cumsum(returns, axis=0))
 #plt.ylabel("Price ($)")
 #plt.grid(True, alpha=0.3)
 #plt.show()
-
+# save the price trajectories to a file
+np.save('price_trajectories.npy', price_trajectories)
+# save the returns to a file
+np.save('returns.npy', returns)
 # plot the store return series
 plt.figure(figsize=(12, 6))
 plt.plot(returns, alpha=0.7)

@@ -53,3 +53,19 @@ Axx = sqrtm(Axx_term_1 + Axx_term_2) - 1./2. * (rho * Lambda_bar + gamma *  Sigm
 # print the size of matrix Axx
 print("Axx.shape = ", Axx.shape)
 
+vec_Axf_term_1 = (np.eye(K) - Phi).T
+vec_Axf_term_2 = (np.eye(S) - Axx @ inv(Lambda))
+
+vec_Axf_pre = np.kron(vec_Axf_term_1, vec_Axf_term_2)
+# get the size of vec_Axf_pre and save it in a variable
+vec_Axf_pre_size = vec_Axf_pre.shape[0]
+
+Axf_term_3 = (np.eye(S) - Axx @ inv(Lambda)) @ B
+vec_Axf_term_3 = Axf_term_3.flatten(order='F')
+
+vec_Axf = rho_bar * inv(np.eye(vec_Axf_pre_size) - rho_bar * vec_Axf_pre) @ vec_Axf_term_3
+
+Axf = vec_Axf.reshape((S, K), order='F')
+
+# print the size of matrix Axf
+print("Axf.shape = ", Axf.shape)
