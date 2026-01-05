@@ -1,0 +1,15 @@
+# --- Python Boilerplate ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# --- Data Exclusion ---
+# Exclude all NumPy binary files
+*.npy
+
+# --- OS Specific ---
+Thumbs.db
